@@ -1,49 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title> todo list</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- compiled and minified CSS-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-            <!--page content goes here-->
-            <div class="row">
-                <div class="col s12">
-                    <div class="card">
-                        <div class="card-content">
-                            <span class="card-title">ToDo List</span>
-                            <div class="row">
-                                <form class="col s12" method="post" action="/">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <input placeholder="Task" id="task" type="text" name="task">
-                                            <label for="task">Insert Task</label>
-                                        </div>
-                                    </div>
-                                    <input class="btn" type="submit" value="Add Task">
-                                </form>
-                            </div>                      
-                        </div>
-                        <div class="class=card-action">
-                            <ul class="collection">
-                            <% tasks.forEach((task) => { %>
-                                <li class ="collection-item">
-                                  <%= task.task %>
-                                  <a href="delete-task/<%= task.id %>" class="secondary-content"><i class="material-icons">delete</i></a>
-                                </li>
-                                <% }) %>                          
-                            </ul>
 
+<head>
+    <title>Halow</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: center;">
+            <div class="card darken-1" style="width: 50%;">
+                <form class="card-content white-text" method="POST" action="/">
+                    <% if(error !== null) { %>
+                        <div class="row teal lighten-4">
+                            <div class="col s12">
+                                <p class="center-align"><%= error %></p>
+                            </div>
                         </div>
+                    <% } %>
+                    <span class="card-title" style="color: black;">ToDo list</span>
+                    <div class="input-field s6">
+                        <input placeholder="Task" id="task" type="text" name="task"></input>
+                        <label for="task">Insert task</label>
                     </div>
+                    <input type="submit" class="waves-effect waves-light btn" value="ADD TASK"></input>  
+                </form>
+                <div class="card-action">
+                    <ul class="collection">
+                        <% tasks.forEach((tasks) => { %>
+                            <li class="collection-item">
+                                <%= tasks.task %>
+                                <a href="delete-task/<%= tasks.id %>" class="secondary-content">
+                                  <i class="material-icons">delete</i>
+                                </a>
+                                <a href="edit/<%= tasks.id %>?q=<%= tasks.task %>" class="secondary-content">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                        </li>
+                        <% }) %>
+                      </ul>
                 </div>
+                <a href="/delete-all" class="btn" style="margin-left: 24px;">Clear all</a>
             </div>
-        </div>
-        <!--compiled and minified javascript-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    </body>
-</html>
+    </div>
+</body>

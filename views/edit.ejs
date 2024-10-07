@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <div style="display: flex; justify-content: center;">
+        <div class="card darken-1" style="width: 50%;">
+            <form class="card-content white-text" method="POST" action="/edit">
+                <% if(error !== null) { %>
+                    <div class="row teal lighten-4">
+                        <div class="col s12">
+                            <p class="center-align"><%= error %></p>
+                        </div>
+                    </div>
+                <% } %>
+                <span class="card-title" style="color: black;">ToDo list</span>
+                <div class="input-field s6">
+                    <input placeholder="Task" id="task" type="text" name="task"></input>
+                    <label for="task">Edit task</label>
+                </div>
+                <input type="submit" class="waves-effect waves-light btn" value="EDIT"></input>  
+            </form>
+        </div>
+    </div>
+</body>
+</html>
